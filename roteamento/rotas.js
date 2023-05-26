@@ -1,34 +1,34 @@
-var express = require('express');
-var Financasbd = require('../models/Financas.js');
-var Usuarios = require('../models/Usuarios.js');
+const express = require('express');
+const Financesbd = require('../models/Financas.js');
+const Usuarios = require('../models/Usuarios.js');
 
-var financasController = require('../controladores/controlador')(Financasbd, Usuarios);
-var financasRouter = express.Router();
-financasRouter.route('/api/financa/:usuario')
-    .get(financasController.get);
+const financesController = require('../controladores/controlador')(Financesbd, Usuarios);
 
+const financesRouter = express.Router();
 
+financesRouter.route('/api/financa/:usuario')
+    .get(financesController.get);
 
-
-financasRouter.route('/api/total/:categoria/:mes/:usuario')
-    .get(financasController.totalCategoria);
-
-
-financasRouter.route("/api/cadastro")
-    .post(financasController.add);
-
-financasRouter.route("/api/login")
-    .post(financasController.login);
-
-financasRouter.route("/api/finalizar/:id")
-   .post(financasController.mudarParaFinalizado)
-
-financasRouter.route("/api/pendente/:id")
-   .post(financasController.mudarParaPendente)
+financesRouter.route('/api/total/:categoria/:mes/:usuario')
+    .get(financesController.totalCategoria);
 
 
-financasRouter.route('/:id')    
-   .get(financasController.getById)
-   .post(financasController.update)
-   .delete(financasController.del);
-module.exports = financasRouter;  
+financesRouter.route("/api/cadastro")
+    .post(financesController.add);
+
+financesRouter.route("/api/login")
+    .post(financesController.login);
+
+financesRouter.route("/api/finalizar/:id")
+   .post(financesController.mudarParaFinalizado)
+
+financesRouter.route("/api/pendente/:id")
+   .post(financesController.mudarParaPendente)
+
+
+financesRouter.route('/:id')    
+   .get(financesController.getById)
+   .post(financesController.update)
+   .delete(financesController.del);
+   
+module.exports = financesRouter;  

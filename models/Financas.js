@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var postSchema = new Schema({
+const postSchema = new Schema({
     usuario:String,
     nome:String,
     valor: Number,
@@ -16,6 +16,6 @@ var postSchema = new Schema({
 
 },{collection:'financas'})
 
-var Financasbd = mongoose.model('Financasbd',postSchema);
+const Financesbd = mongoose.model('Financesbd',postSchema);
 
-module.exports = Financasbd;
+module.exports = Financesbd;
