@@ -1,0 +1,73 @@
+<html>
+
+
+<body>
+
+    <form  method="post" action="/cadastro">
+        <h2>Nome:</h2>
+        <input type="text" name="nome" placeholder="Nome"></br></br></br>
+        <h2>Valor:</h2>
+        <h4>APENAS NUMEROS:</h4>
+        <input type="text" name="valor" placeholder="valor"></br>
+
+        <H3>CATEGORIA:</H3>
+        <select name="categoria">
+            <option value="ganho">GANHO</option>
+            <option value="gasto">GASTO</option>
+            <option value="receber">A  RECEBER</option>
+            <option value="Investimento">INVESTIMENTO</option>
+
+           </select>
+        </br></br>
+
+        <H3>SELECIONE UM TIPO:</H3>
+    </br> <H5>(O TIPO SERÁ USADO PARA OS GRAFICOS DA TELA INICIAL, VÁLIDO APENAS PAGA GASTOS)</H5>
+    </br><select name="subcategoria">
+            <option value="0">INVESTIMENTO</option>
+            <option value="1">CONTAS MENSAIS</o ption>
+            <option value="2">ESTUDOS</option>
+            <option value="3">LAZER</option>
+
+
+           </select>
+        </br></br></br></br>
+
+
+
+<h3>SELECIONE O MÊS</h3>
+        <select name="mesGerado">
+            <option value="Janeiro">01 - JANEIRO</option>
+            <option value="Fevereiro">02 - FEVEREIRO</option>
+            <option value="Março">03 - MARÇO</option>
+            <option value="Abril">04 - ABRIL</option>
+            <option value="Maio">05 - MAIO</option>
+            <option value="Junho">06 - JUNHO</option>
+            <option value="Julho">07 - JULHO</option>
+            <option value="Agosto">08 - AGOSTO</option>
+            <option value="Setembro">09 - SETEMBRO</option>
+            <option value="Outubro">10 - OUTUBRO</option>
+            <option value="Novembro">11 - NOVEMBRO</option>
+            <option value="Dezembro">12 - DEZEMBRO</option>
+           </select>
+
+        </br></br></br></br>
+
+
+        <legend>Selecione a situação</legend>
+        <div>
+          <input type="radio" id="contactChoice1" name="situacao" value="pendente" />
+          <label for="contactChoice1">Pendente</label>
+    
+          <input type="radio" id="contactChoice2" name="situacao" value="finalizado" />
+          <label for="contactChoice2">Finalizado</label>
+        </div>
+    </br></br>
+
+
+        <input class="cadastrar" type="submit" name="acao" value="Cadastrar">
+    </form>
+        </div>
+    </div>
+</body>
+
+</html>
