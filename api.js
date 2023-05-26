@@ -12,10 +12,6 @@ const rotasFinancas = require('./roteamento/rotas');
 const Financasbd = require('./models/Financas');
 
 
-
-
-
-
 app.use(cors())
 
 
@@ -75,6 +71,6 @@ app.delete('/:id',  rotasFinancas)
 
 
 
-app.listen(8080, ()=>{
+app.listen(process.env.PORT || 8080, ()=>{
     console.log('rodando asdasdasd');
 })
