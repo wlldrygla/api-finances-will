@@ -1,8 +1,8 @@
 const express = require('express');
 const Financesbd = require('../models/Financas.js');
 const Usuarios = require('../models/Usuarios.js');
-
-const financesController = require('../controladores/controlador')(Financesbd, Usuarios);
+const Metas = require('../models/Metas.js')
+const financesController = require('../controladores/controlador')(Financesbd, Usuarios, Metas);
 
 const financesRouter = express.Router();
 
@@ -20,15 +20,21 @@ financesRouter.route("/api/login")
     .post(financesController.login);
 
 financesRouter.route("/api/finalizar/:id")
-   .post(financesController.mudarParaFinalizado)
+    .post(financesController.mudarParaFinalizado)
 
 financesRouter.route("/api/pendente/:id")
-   .post(financesController.mudarParaPendente)
+    .post(financesController.mudarParaPendente)
 
 
-financesRouter.route('/:id')    
-   .get(financesController.getById)
-   .post(financesController.update)
-   .delete(financesController.del);
-   
+financesRouter.route('/:id')
+    .get(financesController.getById)
+    .post(financesController.update)
+    .delete(financesController.del);
+
+financesRouter.route('/api/metas/:usuario')
+    .get(financesController.getMetas);
+
+financesRouter.route("/api/metas/cadastro")
+    .post(financesController.addMetas);
+
 module.exports = financesRouter;  
