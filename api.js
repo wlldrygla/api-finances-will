@@ -4,12 +4,10 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 const cors = require('cors');
 
-const path = require('path');
 
 const app = express();
 const rotasFinancas = require('./roteamento/rotas');
 
-const Financasbd = require('./models/Financas');
 
 
 app.use(cors())

@@ -37,13 +37,13 @@ financesRouter.route('/api/metas/:usuario')
 financesRouter.route("/api/metas/cadastro")
     .post(financesController.addMetas);
 
-financesRouter.route("/api/meta/finalizar/:id")
+financesRouter.route("/api/metas/finalizar/:id")
     .post(financesController.mudarMetaFinalizado)
 
-financesRouter.route("/api/meta/fazendo/:id")
+financesRouter.route("/api/metas/fazendo/:id")
     .post(financesController.mudarMetaFazendo)
-    
-financesRouter.route("/api/meta/pendente/:id")
+
+financesRouter.route("/api/metas/pendente/:id")
     .post(financesController.mudarMetaPendente)
 
 module.exports = financesRouter;  
