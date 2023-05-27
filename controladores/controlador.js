@@ -264,7 +264,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
     }
 
     var mudarMetaFazendo = function (req, res) {
-        Metas.findByIdAndUpdate(req.params.id, { situacao: 'FAZENDO' }, function (err, Financas) {
+        Metas.findByIdAndUpdate(req.params.id, { status: 'FAZENDO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
                 res.send("erro" + err);
@@ -277,7 +277,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
     var mudarMetaFinalizado = function (req, res) {
-        Metas.findByIdAndUpdate(req.params.id, { situacao: 'FINALIZADO' }, function (err, Financas) {
+        Metas.findByIdAndUpdate(req.params.id, { status: 'FINALIZADO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
                 res.send("erro" + err);
@@ -290,7 +290,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
     var mudarMetaPendente = function (req, res) {
-        Metas.findByIdAndUpdate(req.params.id, { situacao: 'PENDENTE' }, function (err, Financas) {
+        Metas.findByIdAndUpdate(req.params.id, { status: 'PENDENTE' }, function (err, Financas) {
             if (err) {
                 res.status(404);
                 res.send("erro" + err);
