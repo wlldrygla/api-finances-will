@@ -270,7 +270,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("erro" + err);
             }
             else {
-                res.status(200);
+                res.status(201);
                 res.send("Atualizado");
 
             }
@@ -283,7 +283,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("erro" + err);
             }
             else {
-                res.status(200);
+                res.status(201);
                 res.send("Atualizado");
 
             }
@@ -296,7 +296,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("erro" + err);
             }
             else {
-                res.status(200);
+                res.status(201);
                 res.send("Atualizado");
 
                 
