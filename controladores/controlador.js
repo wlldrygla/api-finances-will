@@ -271,8 +271,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.send("Atualizado");
-
+                res.redirect('/')
             }
         });
     };
@@ -284,7 +283,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.send("Atualizado");
+                res.redirect('/')
 
             }
         });
@@ -297,7 +296,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.send("Atualizado");
+                res.redirect('/')
 
                 
             }
