@@ -245,11 +245,9 @@ var financasController = function (Financasbd, Usuarios, Metas) {
 
    
     var addMetas = function (req, res) {
-        let name = parseInt(req.body.name)
-        let status = parseInt(req.body.status)
         let lista = {
-            name: name,
-            status: status,
+            name: req.body.meta,
+            status: req.body.status,
             usuario: req.body.usuario
 
         }
