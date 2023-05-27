@@ -271,7 +271,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.redirect('/')
+                res.redirect('https://api-will.herokuapp.com')
             }
         });
     };
@@ -283,7 +283,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.redirect('/')
+                res.redirect('https://api-will.herokuapp.com')
 
             }
         });
@@ -296,7 +296,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.redirect('/')
+                res.redirect('https://api-will.herokuapp.com')
 
                 
             }
