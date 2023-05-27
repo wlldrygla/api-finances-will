@@ -50,7 +50,9 @@ app.post("/api/finalizar/:id", rotasFinancas)
 app.post("/api/pendente/:id", rotasFinancas)
 app.post("/api/metas/cadastro", rotasFinancas)
 
-
+app.post("/api/metas/finalizar/:id", rotasFinancas)
+app.post("/api/metas/fazendo/:id", rotasFinancas)
+app.post("/api/metas/pendente/:id", rotasFinancas)
 
 app.post("/:id", rotasFinancas)
 

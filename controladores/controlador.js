@@ -168,7 +168,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(200);
-                res.redirect("http://localhost:3000/");
             }
         });
     };
@@ -195,7 +194,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             financas.remove(function (err) {
                 if (!err) {
                     res.status(204);
-                    res.redirect("http://localhost:3000/");
                 }
             });
         });
@@ -228,22 +226,22 @@ var financasController = function (Financasbd, Usuarios, Metas) {
 
 
     var getMetas = function (req, res) {
-        Metas.find({usuario: req.params.usuario}).exec(function(err,metas){
-        var lista = [];
-        for( let i = 0; i < metas.length; i++){
+        Metas.find({ usuario: req.params.usuario }).exec(function (err, metas) {
+            var lista = [];
+            for (let i = 0; i < metas.length; i++) {
                 lista.push(metas[i])
             }
             res.status(200)
             res.json({
                 metas: lista
-            })         
+            })
         })
-        }
+    }
 
 
-    
 
-   
+
+
     var addMetas = function (req, res) {
         let lista = {
             name: req.body.meta,
@@ -251,18 +249,53 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             usuario: req.body.usuario
 
         }
-       
+
         var metasBd = new Metas(lista);
         metasBd.save(function (err) {
-        if (err) {
-            res.status(500);
-            res.send('Erro : falha ao incluir produto...'+ err);
-        }
-         else {
-            res.status(201);
-            console.log('cadastrado')
-        }
-    })}
+            if (err) {
+                res.status(500);
+                res.send('Erro : falha ao incluir produto...' + err);
+            }
+            else {
+                res.status(201);
+                console.log('cadastrado')
+            }
+        })
+    }
+
+    var mudarMetaFazendo = function (req, res) {
+        Metas.findByIdAndUpdate(req.params.id, { situacao: 'FAZENDO' }, function (err, Financas) {
+            if (err) {
+                res.status(404);
+                res.send("erro" + err);
+            }
+            else {
+                res.status(200);
+            }
+        });
+    };
+    var mudarMetaFinalizado = function (req, res) {
+        Metas.findByIdAndUpdate(req.params.id, { situacao: 'FINALIZADO' }, function (err, Financas) {
+            if (err) {
+                res.status(404);
+                res.send("erro" + err);
+            }
+            else {
+                res.status(200);
+            }
+        });
+    };
+    var mudarMetaPendente = function (req, res) {
+        Metas.findByIdAndUpdate(req.params.id, { situacao: 'PENDENTE' }, function (err, Financas) {
+            if (err) {
+                res.status(404);
+                res.send("erro" + err);
+            }
+            else {
+                res.status(200);
+            }
+        });
+    };
     return {
         add: add,
         get: get,
@@ -274,7 +307,10 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         mudarParaFinalizado: mudarParaFinalizado,
         mudarParaPendente: mudarParaPendente,
         getMetas: getMetas,
-        addMetas:addMetas,
+        addMetas: addMetas,
+        mudarMetaFazendo: mudarMetaFazendo,
+        mudarMetaFinalizado: mudarMetaFinalizado,
+        mudarMetaPendente: mudarMetaPendente,
 
     }
 };
