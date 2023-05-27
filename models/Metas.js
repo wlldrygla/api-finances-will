@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const metasSchema = new Schema({
+    usuario:String,
     name: String,
     status: String
 
