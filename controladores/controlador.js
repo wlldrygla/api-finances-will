@@ -92,7 +92,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
     };
 
 
-    var totalCategoria = function (req, res) {
+    var categoryMonthTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var total_antigo = 0;
             var total_novo = 0;
@@ -103,12 +103,33 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 if (financas[i].mes == req.params.mes && financas[i].categoria == req.params.categoria) {
 
                     total_novo = financas[i].valor;
-                    console.log(total_novo, 'VALOR', financas[i].valor)
                     total = total_antigo + total_novo;
-                    console.log(total)
                     total_antigo = total;
-                    console.log(total_antigo)
-                    console.log('laço', i)
+
+
+                }
+            }
+            res.status(200)
+            res.json({
+                Total: total
+            })
+        })
+
+    };
+
+    var categoryTotal = function (req, res) {
+        Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
+            var total_antigo = 0;
+            var total_novo = 0;
+            var total = 0;
+
+            for (let i = 0; i < financas.length; i++) {
+
+                if (financas[i].categoria == req.params.categoria) {
+
+                    total_novo = financas[i].valor;
+                    total = total_antigo + total_novo;
+                    total_antigo = total;
 
 
                 }
@@ -315,7 +336,8 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         getById: getById,
         update: update,
         del: del,
-        totalCategoria: totalCategoria,
+        categoryMonthTotal: categoryMonthTotal,
+        categoryTotal:categoryTotal,
         login: login,
         mudarParaFinalizado: mudarParaFinalizado,
         mudarParaPendente: mudarParaPendente,
@@ -325,6 +347,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         mudarMetaFinalizado: mudarMetaFinalizado,
         mudarMetaPendente: mudarMetaPendente,
         monthTotal: monthTotal,
+
 
     }
 };

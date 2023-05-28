@@ -10,8 +10,10 @@ financesRouter.route('/api/financa/:usuario')
     .get(financesController.get);
 
 financesRouter.route('/api/total/:categoria/:mes/:usuario')
-    .get(financesController.totalCategoria);
+    .get(financesController.categoryMonthTotal);
 
+    financesRouter.route('/api/total/:usuario/:categoria')
+    .get(financesController.categoryTotal);
 
 financesRouter.route('/api/total/:usuario/:mes')
     .get(financesController.monthTotal);

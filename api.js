@@ -39,9 +39,7 @@ app.get('/api/financa/:usuario', rotasFinancas)
 app.get("/api/total/:categoria/:mes/:usuario", rotasFinancas)
 app.get("/api/total/:mes/:usuario", rotasFinancas)
 app.get('/api/metas/:usuario', rotasFinancas)
-
-
-
+app.get("/api/total/:usuario/:categoria", rotasFinancas)
 
 app.post("/api/cadastro", rotasFinancas)
 app.post("/api/login", rotasFinancas)
