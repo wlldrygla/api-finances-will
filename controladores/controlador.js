@@ -1,19 +1,21 @@
 const cors = require('cors');
+const { default: getAllUserFinances } = require('../functions/Get/GetAllUserFinances');
 
 
 var financasController = function (Financasbd, Usuarios, Metas) {
     var get = function (req, res) {
-        Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
-            var lista = [];
-            for (let i = 0; i < financas.length; i++) {
-                lista.push(financas[i])
-            }
-            res.status(200)
-            res.json({
-                financa: lista
-            })
-        })
-    }
+        // Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
+        //     var lista = [];
+        //     for (let i = 0; i < financas.length; i++) {
+        //         lista.push(financas[i])
+        //     }
+        //     res.status(200)
+        //     res.json({
+        //         financa: lista
+        //     })
+        // })
+        getAllUserFinances(req, res)
+    };
 
 
 
