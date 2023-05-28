@@ -10,4 +10,4 @@ var getAllUserFinances = function (req, res){
         })
     })
 };
-export default getAllUserFinances;
+module.exports = getAllUserFinances;
