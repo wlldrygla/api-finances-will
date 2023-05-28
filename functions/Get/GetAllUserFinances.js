@@ -1,4 +1,4 @@
-function getAllUserFinances (req, res){
+var getAllUserFinances = function (req, res){
     Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
         var lista = [];
         for (let i = 0; i < financas.length; i++) {
@@ -10,5 +10,4 @@ function getAllUserFinances (req, res){
         })
     })
 };
-
 export default getAllUserFinances;
