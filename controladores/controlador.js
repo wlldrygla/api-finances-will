@@ -1,6 +1,6 @@
 
-var financasController = function (Financasbd, Usuarios, Metas) {
-    var get = function (req, res) {
+const financasController = function (Financasbd, Usuarios, Metas) {
+    const get = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var lista = [];
             for (let i = 0; i < financas.length; i++) {
@@ -13,7 +13,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    var add = function (req, res) {
+    const add = function (req, res) {
         console.log(req.body.periodo)
         var meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
         if (req.body.periodo == "periodico") {
@@ -92,7 +92,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
     };
 
 
-    var categoryMonthTotal = function (req, res) {
+    const categoryMonthTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var total_antigo = 0;
             var total_novo = 0;
@@ -117,7 +117,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
 
     };
 
-    var categoryTotal = function (req, res) {
+    const categoryTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var total_antigo = 0;
             var total_novo = 0;
@@ -142,7 +142,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
 
     };
 
-    var monthTotal = function (req, res) {
+    const monthTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var total_antigo = 0;
             var total_novo = 0;
@@ -170,7 +170,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
 
     };
 
-    var getById = function (req, res) {
+    const getById = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             if (err) {
                 res.status(404);
@@ -183,7 +183,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    var update = function (req, res) {
+    const update = function (req, res) {
         console.log(req.body.item)
         Financasbd.findByIdAndUpdate(req.params.id, req.body, function (err, Financas) {
             if (err) {
@@ -197,7 +197,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    var mudarParaFinalizado = function (req, res) {
+    const mudarParaFinalizado = function (req, res) {
         Financasbd.findByIdAndUpdate(req.params.id, { situacao: 'finalizado' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -208,7 +208,8 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
         });
     };
-    var mudarParaPendente = function (req, res) {
+
+    const mudarParaPendente = function (req, res) {
         Financasbd.findByIdAndUpdate(req.params.id, { situacao: 'pendente' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -221,7 +222,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    var del = function (req, res) {
+    const del = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             financas.remove(function (err) {
                 if (!err) {
@@ -231,7 +232,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    var login = function (req, res) {
+    const login = function (req, res) {
         Usuarios.find({ usuario: req.body.usuario }).exec(function (err, usuario) {
 
             if (err) {
@@ -255,7 +256,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    var getMetas = function (req, res) {
+    const getMetas = function (req, res) {
         Metas.find({ usuario: req.params.usuario }).exec(function (err, metas) {
             var lista = [];
             for (let i = 0; i < metas.length; i++) {
@@ -268,7 +269,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    var addMetas = function (req, res) {
+    const addMetas = function (req, res) {
         let lista = {
             name: req.body.meta,
             status: req.body.status,
@@ -289,7 +290,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    var mudarMetaFazendo = function (req, res) {
+    const mudarMetaFazendo = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FAZENDO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -302,7 +303,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    var mudarMetaFinalizado = function (req, res) {
+    const mudarMetaFinalizado = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FINALIZADO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -316,7 +317,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    var mudarMetaPendente = function (req, res) {
+    const mudarMetaPendente = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'PENDENTE' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -330,6 +331,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
         });
     };
+
     return {
         add: add,
         get: get,
