@@ -13,10 +13,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-
-
-
-
     var add = function (req, res) {
         console.log(req.body.periodo)
         var meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -123,9 +119,35 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             })
         })
 
-    }
+    };
 
+    var monthTotal = function (req, res) {
+        Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
+            var total_antigo = 0;
+            var total_novo = 0;
+            var total = 0;
 
+            for (let i = 0; i < financas.length; i++) {
+
+                if (financas[i].mes == req.params.mes) {
+                    if(financas[i].categoria === 'ganho'){
+                        total_novo = financas[i].valor;
+                        total = total_antigo + total_novo;
+                        total_antigo = total;
+                    }else{
+                        total_novo = financas[i].valor;
+                        total = total_antigo - total_novo;
+                        total_antigo = total;  
+                    }
+                }
+            }
+            res.status(200)
+            res.json({
+                Total: total
+            })
+        })
+
+    };
 
     var getById = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
@@ -139,10 +161,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
         })
     };
-
-
-
-
 
     var update = function (req, res) {
         console.log(req.body.item)
@@ -182,11 +200,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-
-
-
-
-
     var del = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             financas.remove(function (err) {
@@ -196,7 +209,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             });
         });
     };
-
 
     var login = function (req, res) {
         Usuarios.find({ usuario: req.body.usuario }).exec(function (err, usuario) {
@@ -222,7 +234,6 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-
     var getMetas = function (req, res) {
         Metas.find({ usuario: req.params.usuario }).exec(function (err, metas) {
             var lista = [];
@@ -234,11 +245,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 metas: lista
             })
         })
-    }
-
-
-
-
+    };
 
     var addMetas = function (req, res) {
         let lista = {
@@ -259,7 +266,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
                 console.log('cadastrado')
             }
         })
-    }
+    };
 
     var mudarMetaFazendo = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FAZENDO' }, function (err, Financas) {
@@ -273,6 +280,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
         });
     };
+
     var mudarMetaFinalizado = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FINALIZADO' }, function (err, Financas) {
             if (err) {
@@ -286,6 +294,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
             }
         });
     };
+
     var mudarMetaPendente = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'PENDENTE' }, function (err, Financas) {
             if (err) {
@@ -315,6 +324,7 @@ var financasController = function (Financasbd, Usuarios, Metas) {
         mudarMetaFazendo: mudarMetaFazendo,
         mudarMetaFinalizado: mudarMetaFinalizado,
         mudarMetaPendente: mudarMetaPendente,
+        monthTotal: monthTotal,
 
     }
 };

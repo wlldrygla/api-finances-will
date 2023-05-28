@@ -13,6 +13,9 @@ financesRouter.route('/api/total/:categoria/:mes/:usuario')
     .get(financesController.totalCategoria);
 
 
+financesRouter.route('/api/total/:usuario/:mes')
+    .get(financesController.monthTotal);
+
 financesRouter.route("/api/cadastro")
     .post(financesController.add);
 
