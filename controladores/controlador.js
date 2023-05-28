@@ -1,6 +1,3 @@
-const cors = require('cors');
-const { default: getAllUserFinances } = require('../functions/Get/GetAllUserFinances');
-
 
 var financasController = function (Financasbd, Usuarios, Metas) {
     var get = function (req, res) {
