@@ -31,7 +31,7 @@ financesRouter.route("/api/pendente/:id")
     .post(financesController.mudarParaPendente)
 
 
-financesRouter.route('/:id')
+financesRouter.route('/get-by-id/:id')
     .get(financesController.getById)
     .post(financesController.update)
     .delete(financesController.del);
