@@ -187,7 +187,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         console.log('ITEM',req.body.item)
         console.log('body',req.body)
 
-        Financasbd.findByIdAndUpdate(req.params.id, req.body, function (err, Financas) {
+        Financasbd.findByIdAndUpdate(req.params.id, req.body.item, function (err, Financas) {
             if (err) {
                 res.status(404);
                 res.send("erro" + err);
