@@ -184,7 +184,9 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     };
 
     const update = function (req, res) {
-        console.log(req.body.item)
+        console.log('ITEM',req.body.item)
+        console.log('body',req.body)
+
         Financasbd.findByIdAndUpdate(req.params.id, req.body, function (err, Financas) {
             if (err) {
                 res.status(404);
