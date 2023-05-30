@@ -1,0 +1,71 @@
+<html>
+<%- include('partials/header-adm.html') %>
+
+<title>Painel do ADM</title>
+
+<body></br></br>
+    <h2>Bem-Vindo <%= usuario %> </h2></br></br>
+
+   
+    <% for(let i =0; i < financas.length; i++) { %>
+
+
+                <div class="editar-itens" >
+                    <h1 >EDITAR</h1></br></br>
+                    <form  class='editar' method="post" action="/admin/editar/<%= financas[i].id %>">
+                        <h3>NOME:</h3>
+                        <input type="text" name="nomeEditado" placeholder="<%= financas[i].nome %>"  value="<%= financas[i].nome %>"></br></br>
+                        <input style="display: none;" type="text" name="usuarioEditado" placeholder="<%= financas[i].usuario %>"  value="<%= financas[i].usuario %>">
+                        <h3>VALOR:</h3>
+                        <input type="text" name="valorEditado" placeholder="<%= financas[i].valor %>" value="<%= financas[i].valor %>"></br></br>
+                        <H3> CATEGORIA:</H3>
+                        <select name="categoriaEditada">
+                            <option value="ganho">GANHO</option>
+                            <option value="gasto">GASTO</option>
+                            <option value="receber">A  RECEBER</option>
+                            <option value="divida">DIVIDA</option>
+                            <option value="Investimento">INVESTIMENTO</option>
+                
+                        </select></br></br>
+                        <h3>SELECIONE O MÊS</h3>
+                        <h4 >MÊS: <%= financas[i].mes %> </h4>
+
+                        <select name="mesEditado">
+                            <option value="<%= financas[i].mes %>" selected>ESCOLHA O MÊS NOVO</option>
+                            <option value="Janeiro">01 - JANEIRO</option>
+                            <option value="Fevereiro">02 - FEVEREIRO</option>
+                            <option value="Março">03 - MARÇO</option>
+                            <option value="Abril">04 - ABRIL</option>
+                            <option value="Maio">05 - MAIO</option>
+                            <option value="Junho">06 - JUNHO</option>
+                            <option value="Julho">07 - JULHO</option>
+                            <option value="Agosto">08 - AGOSTO</option>
+                            <option value="Setembro">09 - SETEMBRO</option>
+                            <option value="Outubro">10 - OUTUBRO</option>
+                            <option value="Novembro">11 - NOVEMBRO</option>
+                            <option value="Dezembro">12 - DEZEMBRO</option>
+                           </select>
+                        </br></br>
+                        <input class="cadastrar" type="submit" name="Editar" value="SALVAR"></br></br></br></br>
+                </form>
+
+                <a class="btn-excluir" href="/admin/deletar/<%= financas[i].categoria %>/<%= financas[i].id %>"> EXCLUIR</a></br></br>
+
+            </br>
+        </div>
+
+            <% } %>
+
+    <% } %>
+
+
+</div>
+
+
+
+
+
+</body>
+
+<%- include('partials/footer.html') %>
+</html>
