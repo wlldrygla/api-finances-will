@@ -6,28 +6,28 @@ const financesController = require('../controladores/controlador')(Financesbd, U
 
 const financesRouter = express.Router();
 
-financesRouter.route('/api/financa/:usuario')
+financesRouter.route('/api/get-all-finances/:usuario')
     .get(financesController.get);
 
-financesRouter.route('/api/total/:categoria/:mes/:usuario')
+financesRouter.route('/api/category-month-total/:categoria/:mes/:usuario')
     .get(financesController.categoryMonthTotal);
 
 financesRouter.route('/api/total-category/:usuario/:categoria')
     .get(financesController.categoryTotal);
 
-financesRouter.route('/api/total/:usuario/:mes')
+financesRouter.route('/api/month-statement-total/:usuario/:mes')
     .get(financesController.monthTotal);
 
-financesRouter.route("/api/cadastro")
+financesRouter.route("/api/insert-finance")
     .post(financesController.add);
 
 financesRouter.route("/api/login")
     .post(financesController.login);
 
-financesRouter.route("/api/finalizar/:id")
+financesRouter.route("/api/finance-pay/:id")
     .post(financesController.mudarParaFinalizado)
 
-financesRouter.route("/api/pendente/:id")
+financesRouter.route("/api/finance-no-pay/:id")
     .post(financesController.mudarParaPendente)
 
 
