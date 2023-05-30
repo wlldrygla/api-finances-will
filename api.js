@@ -35,16 +35,16 @@ app.set('view engine', 'html');
 
 
 
-app.get('/api/financa/:usuario', rotasFinancas)
-app.get("/api/total/:categoria/:mes/:usuario", rotasFinancas)
-app.get("/api/total/:mes/:usuario", rotasFinancas)
+app.get('/api/get-all-finances/:usuario', rotasFinancas)
+app.get("/api/category-month-total/:categoria/:mes/:usuario", rotasFinancas)
+app.get("/api/month-statement-total/:usuario/:mes", rotasFinancas)
 app.get('/api/metas/:usuario', rotasFinancas)
 app.get("/api/total-category/:usuario/:categoria", rotasFinancas)
 
-app.post("/api/cadastro", rotasFinancas)
+app.post("/api/nsert-finance", rotasFinancas)
 app.post("/api/login", rotasFinancas)
-app.post("/api/finalizar/:id", rotasFinancas)
-app.post("/api/pendente/:id", rotasFinancas)
+app.post("/api/finance-pay/:id", rotasFinancas)
+app.post("/api/finance-no-pay/:id", rotasFinancas)
 app.post("/api/metas/cadastro", rotasFinancas)
 
 app.post("/api/metas/finalizar/:id", rotasFinancas)
