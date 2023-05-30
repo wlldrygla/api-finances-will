@@ -15,7 +15,7 @@ app.use(cors())
 
 
 mongoose.connect("mongodb+srv://Will:will@cluster0.pjngibn.mongodb.net/will?retryWrites=true&w=majority",{useNewUrlParser:  true, useUnifiedTopology: true}).then(function(){
-    console.log('conectado com sucesso');
+    console.log('OLHA SÓ QUEM TA ON');
 }).catch(function(err){
     console.log(err.message);
 })
@@ -70,7 +70,7 @@ app.delete('/:id',  rotasFinancas)
 
 
 
-
+ÃÃÃKFKFKFKFKF
 app.listen(process.env.PORT || 8080, ()=>{
-    console.log('rodando asdasdasd');
+    console.log('ESTAMOS ONLINE POORR#');
 })
