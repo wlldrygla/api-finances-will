@@ -7,7 +7,7 @@ const financesController = require('../controladores/controlador')(Financesbd, U
 const financesRouter = express.Router();
 
 financesRouter.route('/api/get-all-finances/:usuario')
-    .get(financesController.get);
+    .get(financesController.getAllFinances);
 
 financesRouter.route('/api/category-month-total/:categoria/:mes/:usuario')
     .get(financesController.categoryMonthTotal);
@@ -19,10 +19,10 @@ financesRouter.route('/api/month-statement-total/:usuario/:mes')
     .get(financesController.monthTotal);
 
 financesRouter.route("/api/insert-finance")
-    .post(financesController.add);
+    .post(financesController.addNewFinance);
 
 financesRouter.route("/api/login")
-    .post(financesController.login);
+    .post(financesController.userLogin);
 
 financesRouter.route("/api/finance-pay/:id")
     .post(financesController.mudarParaFinalizado)
@@ -30,11 +30,10 @@ financesRouter.route("/api/finance-pay/:id")
 financesRouter.route("/api/finance-no-pay/:id")
     .post(financesController.mudarParaPendente)
 
-
 financesRouter.route('/:id')
-    .get(financesController.getById)
-    .post(financesController.update)
-    .delete(financesController.del);
+    .get(financesController.getFinanceById)
+    .post(financesController.updateFinance)
+    .delete(financesController.deleteFinance);
 
 financesRouter.route('/api/metas/:usuario')
     .get(financesController.getMetas);
@@ -43,12 +42,12 @@ financesRouter.route("/api/metas/cadastro")
     .post(financesController.addMetas);
 
 financesRouter.route("/api/metas/finalizar/:id")
-    .post(financesController.mudarMetaFinalizado)
+    .post(financesController.changeTaskToDone)
 
 financesRouter.route("/api/metas/fazendo/:id")
-    .post(financesController.mudarMetaFazendo)
+    .post(financesController.changeTaskToDoing)
 
 financesRouter.route("/api/metas/pendente/:id")
-    .post(financesController.mudarMetaPendente)
+    .post(financesController.changeTaskToDo)
 
 module.exports = financesRouter;  
