@@ -1,6 +1,6 @@
 
 const financasController = function (Financasbd, Usuarios, Metas) {
-    const get = function (req, res) {
+    const getAllFinances = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var lista = [];
             for (let i = 0; i < financas.length; i++) {
@@ -13,7 +13,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    const add = function (req, res) {
+    const addNewFinance = function (req, res) {
         console.log(req.body.periodo)
         var meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
         if (req.body.periodo == "periodico") {
@@ -90,7 +90,6 @@ const financasController = function (Financasbd, Usuarios, Metas) {
 
 
     };
-
 
     const categoryMonthTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
@@ -170,7 +169,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
 
     };
 
-    const getById = function (req, res) {
+    const getFinanceById = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             if (err) {
                 res.status(404);
@@ -183,7 +182,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    const update = function (req, res) {
+    const updateFinance = function (req, res) {
         console.log('ITEM',req.body.item)
         console.log('body',req.body)
 
@@ -224,7 +223,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    const del = function (req, res) {
+    const deleteFinance = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             financas.remove(function (err) {
                 if (!err) {
@@ -234,7 +233,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    const login = function (req, res) {
+    const userLogin = function (req, res) {
         Usuarios.find({ usuario: req.body.usuario }).exec(function (err, usuario) {
 
             if (err) {
@@ -292,7 +291,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         })
     };
 
-    const mudarMetaFazendo = function (req, res) {
+    const changeTaskToDoing = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FAZENDO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -305,7 +304,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    const mudarMetaFinalizado = function (req, res) {
+    const changeTaskToDone = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'FINALIZADO' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -319,7 +318,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
-    const mudarMetaPendente = function (req, res) {
+    const changeTaskToDo = function (req, res) {
         Metas.findByIdAndUpdate(req.params.id, { status: 'PENDENTE' }, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -335,24 +334,22 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     };
 
     return {
-        add: add,
-        get: get,
-        getById: getById,
-        update: update,
-        del: del,
+        addNewFinance: addNewFinance,
+        getAllFinances: getAllFinances,
+        getFinanceById: getFinanceById,
+        updateFinance: updateFinance,
+        deleteFinance: deleteFinance,
         categoryMonthTotal: categoryMonthTotal,
         categoryTotal:categoryTotal,
-        login: login,
+        userLogin: userLogin,
         mudarParaFinalizado: mudarParaFinalizado,
         mudarParaPendente: mudarParaPendente,
         getMetas: getMetas,
         addMetas: addMetas,
-        mudarMetaFazendo: mudarMetaFazendo,
-        mudarMetaFinalizado: mudarMetaFinalizado,
-        mudarMetaPendente: mudarMetaPendente,
+        changeTaskToDoing: changeTaskToDoing,
+        changeTaskToDone: changeTaskToDone,
+        changeTaskToDo: changeTaskToDo,
         monthTotal: monthTotal,
-
-
     }
 };
 module.exports = financasController;
