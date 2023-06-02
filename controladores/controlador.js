@@ -10,7 +10,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             res.json({
                 financa: lista
             })
-            console.log('requisition:', req )
+            console.log('requisition:', req.params.usuario )
         })
     };
 
