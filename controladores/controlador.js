@@ -10,6 +10,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             res.json({
                 financa: lista
             })
+            console.log('requisition:', req )
         })
     };
 
@@ -299,7 +300,6 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.redirect('https://app-react-will.herokuapp.com')
             }
         });
     };
@@ -312,8 +312,6 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                res.redirect('https://app-react-will.herokuapp.com')
-
             }
         });
     };
@@ -325,10 +323,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("erro" + err);
             }
             else {
-                res.status(201);
-                res.redirect('https://app-react-will.herokuapp.com')
-
-                
+                res.status(201);                
             }
         });
     };
