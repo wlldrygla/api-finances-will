@@ -32,7 +32,7 @@ app.get("/api/month-statement-total/:usuario/:mes", rotasFinancas)
 app.get('/api/metas/:usuario', rotasFinancas)
 app.get("/api/total-category/:usuario/:categoria", rotasFinancas)
 
-app.post("/api/nsert-finance", rotasFinancas)
+app.post("/api/insert-finance", rotasFinancas)
 app.post("/api/login", rotasFinancas)
 app.post("/api/finance-pay/:id", rotasFinancas)
 app.post("/api/finance-no-pay/:id", rotasFinancas)
