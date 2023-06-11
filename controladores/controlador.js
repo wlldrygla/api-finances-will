@@ -117,6 +117,31 @@ const financasController = function (Financasbd, Usuarios, Metas) {
 
     };
 
+    const subCategoryMonthTotal = function (req, res) {
+        Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
+            var total_antigo = 0;
+            var total_novo = 0;
+            var total = 0;
+
+            for (let i = 0; i < financas.length; i++) {
+
+                if (financas[i].mes === req.params.mes && financas[i].categoria === req.params.categoria && financas[i].subcategoria === req.params.subcategoria) {
+
+                    total_novo = financas[i].valor;
+                    total = total_antigo + total_novo;
+                    total_antigo = total;
+
+
+                }
+            }
+            res.status(200)
+            res.json({
+                Total: total
+            })
+        })
+
+    };
+
     const categoryTotal = function (req, res) {
         Financasbd.find({ usuario: req.params.usuario }).exec(function (err, financas) {
             var total_antigo = 0;
@@ -345,6 +370,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         changeTaskToDone: changeTaskToDone,
         changeTaskToDo: changeTaskToDo,
         monthTotal: monthTotal,
+        subCategoryMonthTotal: subCategoryMonthTotal,
     }
 };
 module.exports = financasController;

@@ -28,6 +28,9 @@ app.set('view engine', 'html');
 
 app.get('/api/get-all-finances/:usuario', rotasFinancas)
 app.get("/api/category-month-total/:categoria/:mes/:usuario", rotasFinancas)
+app.get("/api/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria", rotasFinancas)
+
+
 app.get("/api/month-statement-total/:usuario/:mes", rotasFinancas)
 app.get('/api/metas/:usuario', rotasFinancas)
 app.get("/api/total-category/:usuario/:categoria", rotasFinancas)

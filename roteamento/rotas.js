@@ -15,6 +15,9 @@ financesRouter.route('/api/category-month-total/:categoria/:mes/:usuario')
 financesRouter.route('/api/total-category/:usuario/:categoria')
     .get(financesController.categoryTotal);
 
+    financesRouter.route('/api/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria')
+    .get(financesController.subCategoryMonthTotal);
+
 financesRouter.route('/api/month-statement-total/:usuario/:mes')
     .get(financesController.monthTotal);
 
