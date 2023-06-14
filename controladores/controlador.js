@@ -312,9 +312,9 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-                console.log('cadastrado')
-            }
-        })
+                res.send(lista.name)
+            };
+        });
     };
 
     const changeTaskToDoing = function (req, res) {
