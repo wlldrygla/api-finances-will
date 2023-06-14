@@ -10,7 +10,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             res.json({
                 financa: lista
             })
-            console.log('requisition:', req.params.usuario )
+            console.log('requisition:', req.params.usuario)
         })
     };
 
@@ -38,7 +38,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                     }
                     else {
                         res.status(201);
-                        console.log('cadastrado')
+                        res.send(lista.nome)
                     }
                 })
             }
@@ -62,9 +62,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                     else {
                         if (i > 12) {
                             res.status(201);
-
-
-
+                            res.send(lista.nome)
                         }
                     }
                 })
@@ -79,17 +77,11 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                     res.send('Erro : falha ao incluir produto...' + err);
                 }
                 else {
-
                     res.status(201);
-                    res.send("ok" + financa);
-
-
+                    res.send(lista.nome)
                 }
             })
         }
-
-
-
     };
 
     const categoryMonthTotal = function (req, res) {
@@ -176,14 +168,14 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             for (let i = 0; i < financas.length; i++) {
 
                 if (financas[i].mes == req.params.mes) {
-                    if(financas[i].categoria === 'ganho'){
+                    if (financas[i].categoria === 'ganho') {
                         total_novo = financas[i].valor;
                         total = total_antigo + total_novo;
                         total_antigo = total;
-                    }else{
+                    } else {
                         total_novo = financas[i].valor;
                         total = total_antigo - total_novo;
-                        total_antigo = total;  
+                        total_antigo = total;
                     }
                 }
             }
@@ -209,8 +201,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     };
 
     const updateFinance = function (req, res) {
-        console.log('ITEM',req.body.item)
-        console.log('body',req.body)
+        console.log('ITEM', req.body.item)
+        console.log('body', req.body)
 
         Financasbd.findByIdAndUpdate(req.params.id, req.body.item, function (err, Financas) {
             if (err) {
@@ -252,8 +244,12 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     const deleteFinance = function (req, res) {
         Financasbd.findById(req.params.id, function (err, financas) {
             financas.remove(function (err) {
-                if (!err) {
+                if (err) {
                     res.status(204);
+                    res.send('ooops... erro ao inserir' + err)
+                }else{
+                    res.status(200);
+                    res.send('deletado com sucesso')
                 }
             });
         });
@@ -348,7 +344,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("erro" + err);
             }
             else {
-                res.status(201);                
+                res.status(201);
             }
         });
     };
@@ -360,7 +356,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         updateFinance: updateFinance,
         deleteFinance: deleteFinance,
         categoryMonthTotal: categoryMonthTotal,
-        categoryTotal:categoryTotal,
+        categoryTotal: categoryTotal,
         userLogin: userLogin,
         mudarParaFinalizado: mudarParaFinalizado,
         mudarParaPendente: mudarParaPendente,

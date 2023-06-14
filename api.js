@@ -50,7 +50,6 @@ app.get('/:id',  rotasFinancas)
 
 app.delete('/:id',  rotasFinancas)
 
-
 app.listen(process.env.PORT || 8080, ()=>{
     console.log('ESTAMOS ONLINE POORR#');
 });
