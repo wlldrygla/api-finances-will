@@ -15,7 +15,6 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     };
 
     const addNewFinance = function (req, res) {
-        console.log(req.body.periodo)
         var meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
         if (req.body.periodo == "periodico") {
             let mesInicio = parseInt(req.body.mesInicio)
@@ -37,7 +36,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                         res.send('Erro : falha ao incluir produto...' + err);
                     }
                     else {
-                        res.status(201);
+                        res.status(200);
                         res.send(lista.nome)
                     }
                 })
@@ -61,7 +60,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                     }
                     else {
                         if (i > 12) {
-                            res.status(201);
+                            res.status(200);
                             res.send(lista.nome)
                         }
                     }
@@ -77,7 +76,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                     res.send('Erro : falha ao incluir produto...' + err);
                 }
                 else {
-                    res.status(201);
+                    res.status(200);
                     res.send(lista.nome)
                 }
             })
