@@ -201,9 +201,6 @@ const financasController = function (Financasbd, Usuarios, Metas) {
     };
 
     const updateFinance = function (req, res) {
-        console.log('ITEM', req.body.item)
-        console.log('body', req.body)
-
         Financasbd.findByIdAndUpdate(req.params.id, req.body.item, function (err, Financas) {
             if (err) {
                 res.status(404);
@@ -211,7 +208,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(200);
-                res.send("Atualizado");
+                res.send(`${req.body.item} atualizado`);
             }
         });
     };
@@ -224,7 +221,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(200);
-            }
+                res.send("Status alterado");
+            };
         });
     };
 
@@ -236,8 +234,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(200);
-                res.send("Atualizado");
-            }
+                res.send("Status alterado");
+            };
         });
     };
 
@@ -321,7 +319,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-            }
+                res.send("Status alterado");
+            };
         });
     };
 
@@ -333,7 +332,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-            }
+                res.send("Status alterado");
+            };
         });
     };
 
@@ -345,7 +345,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
             }
             else {
                 res.status(201);
-            }
+                res.send("Status alterado");
+            };
         });
     };
 
