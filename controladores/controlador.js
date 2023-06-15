@@ -77,7 +77,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                 }
                 else {
                     res.status(200);
-                    res.send(lista.nome)
+                    res.send(req.body.name)
                 }
             })
         }
