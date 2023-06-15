@@ -349,6 +349,20 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
+    const deleteTask = function (req, res) {
+        Metas.findById(req.params.id, function (err, metas) {
+            metas.remove(function (err) {
+                if (err) {
+                    res.status(204);
+                    res.send('ooops... erro ao inserir sua meta' + err)
+                }else{
+                    res.status(200);
+                    res.send('meta deletada com sucesso')
+                }
+            });
+        });
+    };
+
     return {
         addNewFinance: addNewFinance,
         getAllFinances: getAllFinances,
@@ -367,6 +381,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         changeTaskToDo: changeTaskToDo,
         monthTotal: monthTotal,
         subCategoryMonthTotal: subCategoryMonthTotal,
+        deleteTask: deleteTask,
     }
 };
 module.exports = financasController;
