@@ -44,11 +44,13 @@ app.post("/api/metas/finalizar/:id", rotasFinancas)
 app.post("/api/metas/fazendo/:id", rotasFinancas)
 app.post("/api/metas/pendente/:id", rotasFinancas)
 
-app.post("/:id", rotasFinancas)
+app.post("/finance/:id", rotasFinancas)
 
-app.get('/:id',  rotasFinancas)
+app.get('/finance/:id',  rotasFinancas)
 
-app.delete('/:id',  rotasFinancas)
+app.delete('/finance/:id',  rotasFinancas)
+
+app.delete('/task/:id',  rotasFinancas)
 
 app.listen(process.env.PORT || 8080, ()=>{
     console.log('ESTAMOS ONLINE POORR#');

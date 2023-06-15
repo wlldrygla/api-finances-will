@@ -33,10 +33,15 @@ financesRouter.route("/api/finance-pay/:id")
 financesRouter.route("/api/finance-no-pay/:id")
     .post(financesController.mudarParaPendente)
 
-financesRouter.route('/:id')
+financesRouter.route('/finance/:id')
     .get(financesController.getFinanceById)
     .post(financesController.updateFinance)
     .delete(financesController.deleteFinance);
+
+    financesRouter.route('/task/:id')
+    // .get(financesController.getFinanceById)
+    // .post(financesController.updateFinance)
+    .delete(financesController.deleteTask);
 
 financesRouter.route('/api/metas/:usuario')
     .get(financesController.getMetas);
