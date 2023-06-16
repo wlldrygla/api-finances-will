@@ -223,6 +223,8 @@ const financasController = function (Financasbd, Usuarios, Metas) {
                 res.send("Status alterado");
             };
         });
+
+        
     };
 
     const mudarParaPendente = function (req, res) {
