@@ -27,10 +27,10 @@ financesRouter.route("/api/insert-finance")
 financesRouter.route("/api/login")
     .post(financesController.userLogin);
 
-financesRouter.route("/api/finance/finalizado/:id")
+financesRouter.route("/api/finance/pendente/:id")
     .post(financesController.mudarParaFinalizado)
 
-financesRouter.route("/api/finance/pendente/:id")
+financesRouter.route("/api/finance/finalizado/:id")
     .post(financesController.mudarParaPendente)
 
 financesRouter.route('/finance/:id')
