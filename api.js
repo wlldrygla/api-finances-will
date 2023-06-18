@@ -46,9 +46,6 @@ app.post("/task/to-do/:id", apiRoutes)
 
 app.post("/finance/:id", apiRoutes)
 
-
-app.post("/task/update-all", apiRoutes)
-
 app.get('/finance/:id', apiRoutes)
 
 app.delete('/finance/:id', apiRoutes)

@@ -58,8 +58,5 @@ apiRoutes.route("/task/doing/:id")
 apiRoutes.route("/task/to-do/:id")
     .post(financesController.changeTaskToDo)
 
-apiRoutes.route("/task/update-all")
-    .post(financesController.updateAll);
-
 
 module.exports = apiRoutes;  
