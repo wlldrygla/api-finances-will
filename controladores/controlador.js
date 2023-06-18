@@ -214,6 +214,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
 
     const updateAll = (req, res) => {
         Metas.updateMany({status: 'PENDENTE'}, { $set: { status: 'to-do' } })
+        res.send('AAAAAAAAAAAAAAAAAA')
     }
 
     const mudarParaFinalizado = function (req, res) {
