@@ -43,7 +43,7 @@ apiRoutes.route('/task/:id')
     // .post(financesController.updateFinance)
     .delete(financesController.deleteTask);
 
-apiRoutes.route('/task/:usuario')
+apiRoutes.route('/task/get-all/:usuario')
     .get(financesController.getMetas);
 
 apiRoutes.route("/task/cadastro")
