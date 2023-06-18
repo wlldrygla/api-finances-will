@@ -5,20 +5,21 @@ var session = require('express-session');
 const cors = require('cors');
 
 const app = express();
-const rotasFinancas = require('./roteamento/rotas');
+const apiRoutes = require('./roteamento/rotas');
 
 app.use(cors())
 
-mongoose.connect("mongodb+srv://Will:will@cluster0.pjngibn.mongodb.net/will?retryWrites=true&w=majority",{useNewUrlParser:  true, useUnifiedTopology: true}).then(function(){
-    console.log('OLHA SÓ QUEM TA ON');
-}).catch(function(err){
-    console.log(err.message);
+mongoose.connect("mongodb+srv://Will:will@cluster0.pjngibn.mongodb.net/will?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(function () {
+    console.log('CONECTADOS AO BANCO DE DADOS');
+}).catch(function (err) {
+    console.log(`ERROR- ${err.message}`);
 })
-app.use(session({     secret: 'Your_Secret_Key',
+app.use(session({
+    secret: 'Your_Secret_Key',
     resave: true,
     saveUninitialized: true
 }))
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -26,32 +27,34 @@ app.use(bodyParser.urlencoded({
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.get('/api/get-all-finances/:usuario', rotasFinancas)
-app.get("/api/category-month-total/:categoria/:mes/:usuario", rotasFinancas)
-app.get("/api/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria", rotasFinancas)
+app.get('/finance/get-all/:usuario', apiRoutes)
+app.get("/finance/category-month-total/:categoria/:mes/:usuario", apiRoutes)
+app.get("/finance/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria", apiRoutes)
+
+app.get("/finance/month-statement-total/:usuario/:mes", apiRoutes)
+app.get('/task/get-all/:usuario', apiRoutes)
+app.get("/finance/total-category/:usuario/:categoria", apiRoutes)
+
+app.post("/finance/insert", apiRoutes)
+app.post("/user/login", apiRoutes)
+app.post("/finance/finalizado/:id", apiRoutes)
+app.post("/finance/pendente/:id", apiRoutes)
+app.post("/task/insert", apiRoutes)
+app.post("/task/done/:id", apiRoutes)
+app.post("/task/doing/:id", apiRoutes)
+app.post("/task/to-do/:id", apiRoutes)
+
+app.post("/finance/:id", apiRoutes)
 
 
-app.get("/api/month-statement-total/:usuario/:mes", rotasFinancas)
-app.get('/api/metas/:usuario', rotasFinancas)
-app.get("/api/total-category/:usuario/:categoria", rotasFinancas)
+app.post("/task/update-all", apiRoutes)
 
-app.post("/api/insert-finance", rotasFinancas)
-app.post("/api/login", rotasFinancas)
-app.post("/api/finance/finalizado/:id", rotasFinancas)
-app.post("/api/finance/pendente/:id", rotasFinancas)
-app.post("/api/metas/cadastro", rotasFinancas)
-app.post("/api/metas/finalizar/:id", rotasFinancas)
-app.post("/api/metas/fazendo/:id", rotasFinancas)
-app.post("/api/metas/pendente/:id", rotasFinancas)
+app.get('/finance/:id', apiRoutes)
 
-app.post("/finance/:id", rotasFinancas)
+app.delete('/finance/:id', apiRoutes)
 
-app.get('/finance/:id',  rotasFinancas)
+app.delete('/task/:id', apiRoutes)
 
-app.delete('/finance/:id',  rotasFinancas)
-
-app.delete('/task/:id',  rotasFinancas)
-
-app.listen(process.env.PORT || 8080, ()=>{
-    console.log('ESTAMOS ONLINE POORR#');
+app.listen(process.env.PORT || 8080, () => {
+    console.log('SERVIDOR RODANDO');
 });

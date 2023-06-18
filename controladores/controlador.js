@@ -212,6 +212,10 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         });
     };
 
+    const updateAll = (req, res) => {
+        Metas.updateMany({status: 'PENDENTE'}, { $set: { status: 'to-do' } })
+    }
+
     const mudarParaFinalizado = function (req, res) {
         Financasbd.findByIdAndUpdate(req.params.id, { situacao: 'finalizado' }, function (err, Financas) {
             if (err) {
@@ -384,6 +388,7 @@ const financasController = function (Financasbd, Usuarios, Metas) {
         monthTotal: monthTotal,
         subCategoryMonthTotal: subCategoryMonthTotal,
         deleteTask: deleteTask,
+        updateAll: updateAll
     }
 };
 module.exports = financasController;
