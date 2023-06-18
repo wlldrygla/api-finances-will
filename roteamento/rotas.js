@@ -4,61 +4,61 @@ const Usuarios = require('../models/Usuarios.js');
 const Metas = require('../models/Metas.js')
 const financesController = require('../controladores/controlador')(Financesbd, Usuarios, Metas);
 
-const financesRouter = express.Router();
+const apiRoutes = express.Router();
 
-financesRouter.route('/finance/get-all/:usuario')
+apiRoutes.route('/finance/get-all/:usuario')
     .get(financesController.getAllFinances);
 
-financesRouter.route('/finance/category-month-total/:categoria/:mes/:usuario')
+apiRoutes.route('/finance/category-month-total/:categoria/:mes/:usuario')
     .get(financesController.categoryMonthTotal);
 
-financesRouter.route('/finance/total-category/:usuario/:categoria')
+apiRoutes.route('/finance/total-category/:usuario/:categoria')
     .get(financesController.categoryTotal);
 
-financesRouter.route('/finance/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria')
+apiRoutes.route('/finance/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria')
     .get(financesController.subCategoryMonthTotal);
 
-financesRouter.route('/finance/month-statement-total/:usuario/:mes')
+apiRoutes.route('/finance/month-statement-total/:usuario/:mes')
     .get(financesController.monthTotal);
 
-financesRouter.route("/finance/insert")
+apiRoutes.route("/finance/insert")
     .post(financesController.addNewFinance);
 
-financesRouter.route("/user/login")
+apiRoutes.route("/user/login")
     .post(financesController.userLogin);
 
-financesRouter.route("/finance/pendente/:id")
+apiRoutes.route("/finance/pendente/:id")
     .post(financesController.mudarParaFinalizado)
 
-financesRouter.route("/finance/finalizado/:id")
+apiRoutes.route("/finance/finalizado/:id")
     .post(financesController.mudarParaPendente)
 
-financesRouter.route('/finance/:id')
+apiRoutes.route('/finance/:id')
     .get(financesController.getFinanceById)
     .post(financesController.updateFinance)
     .delete(financesController.deleteFinance);
 
-financesRouter.route('/task/:id')
+apiRoutes.route('/task/:id')
     // .get(financesController.getFinanceById)
     // .post(financesController.updateFinance)
     .delete(financesController.deleteTask);
 
-financesRouter.route('/task/:usuario')
+apiRoutes.route('/task/:usuario')
     .get(financesController.getMetas);
 
-financesRouter.route("/task/cadastro")
+apiRoutes.route("/task/cadastro")
     .post(financesController.addMetas);
 
-financesRouter.route("/task/done/:id")
+apiRoutes.route("/task/done/:id")
     .post(financesController.changeTaskToDone)
 
-financesRouter.route("/task/doing/:id")
+apiRoutes.route("/task/doing/:id")
     .post(financesController.changeTaskToDoing)
 
-financesRouter.route("/task/to-do/:id")
+apiRoutes.route("/task/to-do/:id")
     .post(financesController.changeTaskToDo)
 
-financesRouter.route("/task/update-all")
+apiRoutes.route("/task/update-all")
     .post(financesController.updateAll);
 
 
