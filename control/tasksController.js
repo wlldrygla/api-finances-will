@@ -5,10 +5,12 @@ const tasksController = function (Tasks) {
             console.log('user',req.params.user )
             console.log('TAAAASK', Tasks)
 
-            Tasks.find({ user: req.params.user }).exec(function (tasks1) {
+            Tasks.find({ user: req.params.user }).exec(function (err, tasks) {
             let taskList = [];
-            console.log(tasks1)
-            for (let i = 0; i < tasks1.length; i++) {
+            console.log(tasks)
+            console.log('err', err)
+
+            for (let i = 0; i < tasks.length; i++) {
                 taskList.push(tasks[i])
             }
             res.status(200)
