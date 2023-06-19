@@ -10,7 +10,8 @@ const usersController = function (Users) {
             } else {
                 for (let i = 0; i < user.length; i++) {
                     if (user[i].password == req.body.password) {
-                        res.json({ userLogado: user[i].user })
+                        res.json({ user: user[i].user })
+                        console.log('logado', user[i].user )
                     } else {
                         console.log('senha', user[i].password)
                         console.log('user', user[i].user)
