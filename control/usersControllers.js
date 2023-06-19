@@ -12,6 +12,9 @@ const usersController = function (Users) {
                     if (user[i].password == req.body.password) {
                         res.json({ userLogado: user[i].user })
                     } else {
+                        console.log('senha', user[i].password)
+                        console.log('user', user[i].user)
+
                         res.json({ erro: "Senha Incorreta" })
                     }
                 }
