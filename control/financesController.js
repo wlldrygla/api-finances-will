@@ -109,8 +109,8 @@ const financesController = function (Finances) {
             let total = 0;
 
             for (let i = 0; i < finances.length; i++) {
-                if (financas[i].month === req.params.month && financas[i].categoria === req.params.categoria && financas[i].subcategoria === req.params.subcategoria) {
-                    newTotal = financas[i].value;
+                if (finances[i].month === req.params.month && finances[i].categoria === req.params.categoria && finances[i].subcategoria === req.params.subcategoria) {
+                    newTotal = finances[i].value;
                     total = oldTotal + newTotal;
                     oldTotal = total;
                 }
@@ -123,14 +123,14 @@ const financesController = function (Finances) {
     };
 
     const categoryTotal = function (req, res) {
-        Finances.find({ user: req.params.user }).exec(function (err, financas) {
+        Finances.find({ user: req.params.user }).exec(function (err, finances) {
             let oldTotal = 0;
             let newTotal = 0;
             let total = 0;
 
-            for (let i = 0; i < financas.length; i++) {
-                if (financas[i].categoria == req.params.categoria) {
-                    newTotal = financas[i].value;
+            for (let i = 0; i < finances.length; i++) {
+                if (finances[i].categoria == req.params.categoria) {
+                    newTotal = finances[i].value;
                     total = oldTotal + newTotal;
                     oldTotal = total;
                 }
@@ -143,19 +143,19 @@ const financesController = function (Finances) {
     };
 
     const monthTotal = function (req, res) {
-        Finances.find({ user: req.params.user }).exec(function (err, financas) {
+        Finances.find({ user: req.params.user }).exec(function (err, finances) {
             let oldTotal = 0;
             let newTotal = 0;
             let total = 0;
 
-            for (let i = 0; i < financas.length; i++) {
-                if (financas[i].month == req.params.month) {
-                    if (financas[i].categoria === 'positive') {
-                        newTotal = financas[i].value;
+            for (let i = 0; i < finances.length; i++) {
+                if (finances[i].month == req.params.month) {
+                    if (finances[i].categoria === 'positive') {
+                        newTotal = finances[i].value;
                         total = oldTotal + newTotal;
                         oldTotal = total;
                     } else {
-                        newTotal = financas[i].value;
+                        newTotal = finances[i].value;
                         total = oldTotal - newTotal;
                         oldTotal = total;
                     }
