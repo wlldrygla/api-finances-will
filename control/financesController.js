@@ -42,7 +42,7 @@ const financesController = function (Finances) {
                 })
             }
         } else if (req.body.period == "fixed") {
-            for (i = 1; i <= 12; i++) {
+            for (let i = 1; i <= 12; i++) {
                 let financeList = {
                     name: req.body.name,
                     value: req.body.value,
