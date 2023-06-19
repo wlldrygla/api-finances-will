@@ -109,7 +109,7 @@ const financesController = function (Finances) {
             let total = 0;
 
             for (let i = 0; i < finances.length; i++) {
-                if (finances[i].month === req.params.month && finances[i].categoria === req.params.categoria && finances[i].subcategoria === req.params.subcategoria) {
+                if (finances[i].month === req.params.month && finances[i].category === req.params.category && finances[i].subcategory === req.params.subcategory) {
                     newTotal = finances[i].value;
                     total = oldTotal + newTotal;
                     oldTotal = total;
@@ -129,7 +129,7 @@ const financesController = function (Finances) {
             let total = 0;
 
             for (let i = 0; i < finances.length; i++) {
-                if (finances[i].categoria == req.params.categoria) {
+                if (finances[i].category == req.params.category) {
                     newTotal = finances[i].value;
                     total = oldTotal + newTotal;
                     oldTotal = total;
@@ -150,7 +150,7 @@ const financesController = function (Finances) {
 
             for (let i = 0; i < finances.length; i++) {
                 if (finances[i].month == req.params.month) {
-                    if (finances[i].categoria === 'positive') {
+                    if (finances[i].category === 'positive') {
                         newTotal = finances[i].value;
                         total = oldTotal + newTotal;
                         oldTotal = total;
