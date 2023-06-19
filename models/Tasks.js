@@ -8,6 +8,6 @@ const tasksSchema = new Schema({
 
 },{collection:'tasks'})
 
-const Tasks = mongoose.model('Tasks',tasksSchema);
+const Tasks = mongoose.model('Tasks', tasksSchema);
 
 module.exports = Tasks;

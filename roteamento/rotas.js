@@ -1,9 +1,9 @@
 const express = require('express');
 const Finances = require('../models/Finances.js');
 const Users = require('../models/Users.js');
-const Tasks = require('../models/Tasks.js')
+const TasksBd = require('../models/Tasks.js')
 const financesController = require('../control/financesController.js')(Finances);
-const tasksController = require('../control/tasksController.js')(Tasks);
+const tasksController = require('../control/tasksController.js')(TasksBd);
 const usersController = require('../control/usersControllers.js')(Users)
 const apiRoutes = express.Router();
 
