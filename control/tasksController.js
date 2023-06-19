@@ -1,9 +1,10 @@
 
 const tasksController = function (Tasks) {
     console.log('TAAAASK',Tasks)
-    console.log('user',req.params.user )
 
         const getTasks = function (req, res) {
+            console.log('user',req.params.user )
+
             Tasks.find({ user: req.params.user }).exec(function (tasks) {
             let taskList = [];
             console.log(tasks)
