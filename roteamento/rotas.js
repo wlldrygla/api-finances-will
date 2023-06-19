@@ -1,62 +1,71 @@
 const express = require('express');
-const Financesbd = require('../models/Financas.js');
-const Usuarios = require('../models/Usuarios.js');
-const Metas = require('../models/Metas.js')
-const financesController = require('../controladores/controlador')(Financesbd, Usuarios, Metas);
-
+const Finances = require('../models/Finances.js');
+const Users = require('../models/Users.js');
+const Tasks = require('../models/Tasks.js')
+const financesController = require('../control/financesController.js')(Finances);
+const tasksController = require('../control/tasksController.js')(Tasks);
+const usersController = require('../control/usersControllers.js')(Users)
 const apiRoutes = express.Router();
 
-apiRoutes.route('/finance/get-all/:usuario')
+apiRoutes.route('/finance/get-all/:user')
     .get(financesController.getAllFinances);
 
-apiRoutes.route('/finance/category-month-total/:categoria/:mes/:usuario')
+apiRoutes.route('/finance/category-month-total/:category/:month/:user')
     .get(financesController.categoryMonthTotal);
 
-apiRoutes.route('/finance/total-category/:usuario/:categoria')
+apiRoutes.route('/finance/total-category/:user/:category')
     .get(financesController.categoryTotal);
 
-apiRoutes.route('/finance/subcategory-month-total/:categoria/:mes/:usuario/:subcategoria')
+apiRoutes.route('/finance/subcategory-month-total/:category/:month/:user/:subcategory')
     .get(financesController.subCategoryMonthTotal);
 
-apiRoutes.route('/finance/month-statement-total/:usuario/:mes')
+apiRoutes.route('/finance/month-statement-total/:user/:month')
     .get(financesController.monthTotal);
 
 apiRoutes.route("/finance/insert")
     .post(financesController.addNewFinance);
 
-apiRoutes.route("/user/login")
-    .post(financesController.userLogin);
+apiRoutes.route("/finance/pay/:id")
+    .post(financesController.payFinance)
 
-apiRoutes.route("/finance/pendente/:id")
-    .post(financesController.mudarParaFinalizado)
-
-apiRoutes.route("/finance/finalizado/:id")
-    .post(financesController.mudarParaPendente)
+apiRoutes.route("/finance/unpay/:id")
+    .post(financesController.unpayFinance)
 
 apiRoutes.route('/finance/:id')
     .get(financesController.getFinanceById)
     .post(financesController.updateFinance)
     .delete(financesController.deleteFinance);
 
+
+
+apiRoutes.route("/user/login")
+    .post(usersController.userLogin);
+
+
+
+
 apiRoutes.route('/task/:id')
     // .get(financesController.getFinanceById)
     // .post(financesController.updateFinance)
-    .delete(financesController.deleteTask);
+    .delete(tasksController.deleteTask);
 
-apiRoutes.route('/task/get-all/:usuario')
-    .get(financesController.getMetas);
+apiRoutes.route('/task/get-all/:user')
+    .get(tasksController.getTasks);
 
-apiRoutes.route("/task/cadastro")
-    .post(financesController.addMetas);
+apiRoutes.route("/task/insert")
+    .post(tasksController.addTasks);
 
 apiRoutes.route("/task/done/:id")
-    .post(financesController.changeTaskToDone)
+    .post(tasksController.changeTaskToDone)
 
 apiRoutes.route("/task/doing/:id")
-    .post(financesController.changeTaskToDoing)
+    .post(tasksController.changeTaskToDoing)
 
 apiRoutes.route("/task/to-do/:id")
-    .post(financesController.changeTaskToDo)
+    .post(tasksController.changeTaskToDo)
+
+
+
 
 
 module.exports = apiRoutes;  
