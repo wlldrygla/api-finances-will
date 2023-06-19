@@ -1,7 +1,7 @@
 
-const tasksController = function (TasksBd) {
+const tasksController = function (Tasks) {
         const getTasks = function (req, res) {
-            TasksBd.find({ user: req.params.user }).exec(function (tasks) {
+            Tasks.find({ user: req.params.user }).exec(function (tasks) {
             let taskList = [];
             console.log(tasks)
             for (let i = 0; i < tasks.length; i++) {
