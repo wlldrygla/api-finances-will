@@ -3,6 +3,7 @@ const tasksController = function (Tasks) {
         const getTasks = function (req, res) {
         Tasks.find({ user: req.params.user }).exec(function (tasks) {
             let taskList = [];
+            console.log(tasks)
             for (let i = 0; i < tasks.length; i++) {
                 taskList.push(tasks[i])
             }
