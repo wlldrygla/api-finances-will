@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const tasksSchema = new Schema({
     user:String,
-    name: String,
+    task: String,
     status: String
 
 },{collection:'tasks'})

@@ -37,6 +37,7 @@ app.get("/finance/total-category/:user/:category", apiRoutes)
 
 app.post("/finance/insert", apiRoutes)
 app.post("/user/login", apiRoutes)
+
 app.post("/finance/pay/:id", apiRoutes)
 app.post("/finance/unpay/:id", apiRoutes)
 app.post("/task/insert", apiRoutes)

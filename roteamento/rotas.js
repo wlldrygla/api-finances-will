@@ -25,9 +25,10 @@ apiRoutes.route('/finance/month-statement-total/:user/:month')
 apiRoutes.route("/finance/insert")
     .post(financesController.addNewFinance);
 
+//recebe o status da finança na requisiçao, entao se receber 'pay' tem que mudar para unpay
 apiRoutes.route("/finance/pay/:id")
     .post(financesController.unpayFinance)
-
+//recebe o status da finança na requisiçao, entao se receber 'unpay' tem que mudar para pay
 apiRoutes.route("/finance/unpay/:id")
     .post(financesController.payFinance)
 
