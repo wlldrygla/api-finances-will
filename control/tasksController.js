@@ -82,6 +82,9 @@ const tasksController = function (Tasks) {
 
     const deleteTask = function (req, res) {
         Tasks.findById(req.params.id, function (task) {
+            console.log('ID', req.params.id)
+            console.log('task', task)
+
             task.remove(function (err) {
                 if (err) {
                     res.status(204);
