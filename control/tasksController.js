@@ -81,8 +81,8 @@ const tasksController = function (Tasks) {
     };
 
     const deleteTask = function (req, res) {
-        Tasks.findById(req.params.id, function (Tasks) {
-            Tasks.remove(function (err) {
+        Tasks.findById(req.params.id, function (task) {
+            task.remove(function (err) {
                 if (err) {
                     res.status(204);
                     res.send('ooops... erro ao deletar sua tarefa' + err)
