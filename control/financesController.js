@@ -59,7 +59,7 @@ const financesController = function (Finances) {
                         res.send('Erro : falha ao incluir produto...' + err);
                     }
                     else {
-                        if (i > 12) {
+                        if (i === 12) {
                             res.status(200);
                             res.send(financeList.name)
                         }
