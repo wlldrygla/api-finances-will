@@ -5,17 +5,16 @@ const usersController = function (Users) {
             if (err) {
                 console.log('erro:', err)
                 res.send('erro')
-            } else if (user.length == 0) {
+            } else if (user.length === 0) {
                 res.json({ erro: "Usuário Incorreto" })
             } else {
-                for (let i = 0; i < user.length; i++) {
-                    if (user[i].password == req.body.password) {
+                for (let i = 0; i <= user.length; i++) {
+                    if (user[i].password === req.body.password) {
                         res.json({ user: user[i].user })
                         console.log('logado', user[i].user )
-                    } else {
+                    } else if( i === user.length) {
                         console.log('senha', user[i].password)
                         console.log('user', user[i].user)
-
                         res.json({ erro: "Senha Incorreta" })
                     }
                 }
