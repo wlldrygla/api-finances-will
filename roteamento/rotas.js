@@ -26,10 +26,10 @@ apiRoutes.route("/finance/insert")
     .post(financesController.addNewFinance);
 
 apiRoutes.route("/finance/pay/:id")
-    .post(financesController.payFinance)
+    .post(financesController.unpayFinance)
 
 apiRoutes.route("/finance/unpay/:id")
-    .post(financesController.unpayFinance)
+    .post(financesController.payFinance)
 
 apiRoutes.route('/finance/:id')
     .get(financesController.getFinanceById)
