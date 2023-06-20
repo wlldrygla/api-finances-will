@@ -22,7 +22,7 @@ const tasksController = function (Tasks) {
 
     const addTasks = function (req, res) {
         let taskList = {
-            name: req.body.task,
+            task: req.body.task,
             status: req.body.status,
             user: req.body.user
 
