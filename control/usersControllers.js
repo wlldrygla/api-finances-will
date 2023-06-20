@@ -8,7 +8,7 @@ const usersController = function (Users) {
             } else if (user.length === 0) {
                 res.json({ erro: "Usuário Incorreto" })
             } else {
-                for (let i = 0; i <= user.length; i++) {
+                for (let i = 0; i < user.length; i++) {
                     if (user[i].password === req.body.password) {
                         res.json({ user: user[i].user })
                         console.log('logado', user[i].user )
