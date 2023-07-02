@@ -61,7 +61,7 @@ const financesController = function (Finances) {
                     else {
                         if (i === 12) {
                             res.status(200);
-                            res.send(financeList.name)
+                            res.send(financeList.name0)
                         }
                     }
                 })

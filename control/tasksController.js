@@ -2,13 +2,8 @@
 const tasksController = function (Tasks) {
 
         const getTasks = function (req, res) {
-            console.log('user',req.params.user )
-            console.log('TAAAASK', Tasks)
-
             Tasks.find({ user: req.params.user }).exec(function (err, tasks) {
             let taskList = [];
-            console.log(tasks)
-            console.log('err', err)
 
             for (let i = 0; i < tasks.length; i++) {
                 taskList.push(tasks[i])
@@ -82,9 +77,6 @@ const tasksController = function (Tasks) {
 
     const deleteTask = function (req, res) {
         Tasks.findById(req.params.id, function (task) {
-            console.log('ID', req.params.id)
-            console.log('task', task)
-
             task.remove(function (err) {
                 if (err) {
                     res.status(204);
