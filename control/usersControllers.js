@@ -7,10 +7,12 @@ const usersController = function (Users) {
             } else if (user.length === 0) {
                 res.json({ erro: "Usuário Incorreto" })
             } else {
-                if (user[i].password === req.body.password) {
-                    res.json({ user: user[i].user })
-                } else if (i === user.length) {
-                    res.json({ erro: "Senha Incorreta" })
+                for (let i = 0; i < user.length; i++) {
+                    if (user[i].password === req.body.password) {
+                        res.json({ user: user[i].user })
+                    } else if( i === user.length) {
+                        res.json({ erro: "Senha Incorreta" })
+                    }
                 }
             }
         })
