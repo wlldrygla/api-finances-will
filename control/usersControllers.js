@@ -6,7 +6,7 @@ const usersController = function (Users) {
                 res.send('erro')
             } 
                 if (user[0].password === req.body.password && user[0].user === req.body.user) {
-                    res.json({ user: user[i].user })
+                    res.json({ user: user[0].user })
                 } else {
                     res.json('ERRO')
                 }
