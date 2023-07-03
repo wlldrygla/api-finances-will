@@ -16,6 +16,9 @@ const usersController = function (Users) {
                 } else {
                     res.json({ erro: "Senha Incorreta" })
                     console.log('4')
+                    console.log('user.password', user.password)
+                    console.log('req.body.password', req.body.password)
+
                 }
             }
         })
