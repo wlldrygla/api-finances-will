@@ -2,6 +2,7 @@
 const usersController = function (Users) {
     const userLogin = function (req, res) {
         Users.find({ usuario: req.body.user }).exec(function (err, user) {
+            console.log(user)
             if (err) {
                 res.send(`erro ${err}`)
                 console.log('1')
